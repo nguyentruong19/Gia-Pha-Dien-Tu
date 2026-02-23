@@ -92,7 +92,11 @@ CREATE TABLE IF NOT EXISTS profiles (
 -- Auto-create profile on signup
 -- ⚠️ ĐỔI EMAIL ADMIN: thay 'your-admin@example.com' bằng email admin thật
 CREATE OR REPLACE FUNCTION handle_new_user()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER 
+LANGUAGE plpgsql
+SET search_path = public
+SECURITY DEFINER
+AS $$
 DECLARE
     user_email TEXT;
 BEGIN
