@@ -62,6 +62,7 @@ CREATE INDEX IF NOT EXISTS idx_families_mother ON families (mother_handle);
 
 -- Updated_at trigger
 CREATE OR REPLACE FUNCTION update_updated_at()
+SET search_path = public
 RETURNS TRIGGER AS $$
 BEGIN
     NEW.updated_at = now();
